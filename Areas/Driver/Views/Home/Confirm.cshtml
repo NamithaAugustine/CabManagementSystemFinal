@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> _userManager
+@inject SignInManager<ApplicationUser> _signinManager
+@{
+    ApplicationUser appUser = null;
+    ViewData["Title"] = "Confirm";
+    if (_signinManager.IsSignedIn(User))
+        appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+}
+
+
+<h1>Ride Confirmed</h1>
+<div class="text-center">
+    <h2 class="display-4">@appUser?.FirstName: Ride is assigned to you</h2>
+</div>
+

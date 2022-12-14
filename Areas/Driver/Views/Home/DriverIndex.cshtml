@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<Booking>
+@inject UserManager<ApplicationUser> _userManager
+@inject SignInManager<ApplicationUser> _signinManager
+@{
+    ApplicationUser appUser = null;
+    ViewData["Title"] = "Index";
+    if (_signinManager.IsSignedIn(User))
+        appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+}
+<h1>Index</h1>
+
+<div class="text-center">
+    <h1 class="display-1">Cabex🚓</h1>
+
+    
+</div>
+<h2 class="display-4">Welcome @appUser?.FirstName</h2>
+@if (_signinManager.IsSignedIn(User))
+{
+    <div class="container-fluid">
+        @if (Model.Any())
+        {
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">From</th>
+                        <th scope="col">To</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Confirm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.DriverConfirmed == false)
+                        {
+                          <tr>
+                            <td>@item.From</td>
+                            <td>@item.To</td>
+                            <td>@item.Date</td>
+                            <td><a class="btn btn-success" asp-action="Confirm" asp-controller="Home" asp-area="Driver" asp-route-id="@item.Id"><span>Confirm</span></a></td>
+                        </tr>  
+                        }                        
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+}

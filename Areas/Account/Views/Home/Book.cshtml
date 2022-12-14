@@ -1,0 +1,48 @@
+﻿@using CabManagementSystems.Models.ViewModel;
+@model BookingViewModel
+@{
+    ViewData["Title"] = "Book";
+}
+
+<h1>Book</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <form method="post">
+
+
+                <div>
+                    <label asp-for="From"></label>
+                    <select asp-for="From" asp-items="@Html.GetEnumSelectList<global::Location>()" class="form-control">
+                        <option>--- Select a location ---</option>
+                    </select>
+                    <span asp-validation-for="From" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="To"></label>
+                    <select asp-for="To" asp-items="@Html.GetEnumSelectList<global::Location>()" class="form-control">
+                        <option>--- Select a location ---</option>
+                    </select>
+                    <span asp-validation-for="To" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Date"></label>
+                    <input asp-for="Date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid mt-4">
+                    @*<a class="btn btn-success" asp-action="Index" asp-controller="Home" asp-area="Account" ><span>Book</span></a><*@
+                   <button class="btn btn-primary">Book</button>
+                </div>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

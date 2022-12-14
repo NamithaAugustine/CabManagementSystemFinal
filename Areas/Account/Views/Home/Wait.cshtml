@@ -1,0 +1,16 @@
+﻿@model Booking
+
+@{
+    ViewData["Title"] = "Wait";
+}
+
+<h1>Wait</h1>
+@if(@Model.DriverConfirmed == true)
+{
+    <a class="btn btn-success" asp-action="Index" asp-controller="Home" asp-area="Account" asp-route-id="Id"><span>Pay</span></a>
+}
+else
+{
+    <h5>Waiting For Drivers</h5>
+}
+

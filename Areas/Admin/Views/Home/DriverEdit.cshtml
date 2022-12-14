@@ -1,0 +1,54 @@
+﻿@using CabManagementSystems.Models.ViewModel;
+@model DriverEditViewModel
+@{
+    ViewData["Title"] = "DriverEdit";
+}
+
+<h1>DriverEdit</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <form method="post">
+                <div>
+                    <label asp-for="CarName"></label>
+                    <input asp-for="CarName" class="form-control" />
+                    <span asp-validation-for="CarName" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="CarNumber"></label>
+                    <input asp-for="CarNumber" class="form-control" />
+                    <span asp-validation-for="CarNumber" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Dob"></label>
+                    <input asp-for="Dob" class="form-control" />
+                    <span asp-validation-for="Dob" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Car"></label>
+                    <select asp-for="Car" asp-items="@Html.GetEnumSelectList<CarModel>()" class="form-control">
+                        <option>--- Select a CarModel ---</option>
+                    </select>
+                    <span asp-validation-for="Car" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Gender"></label>
+                    <select asp-for="Gender" asp-items="@Html.GetEnumSelectList<Gender>()" class="form-control">
+                        <option>--- Select a Gender ---</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="d-grid mt-4">
+                    <button class="btn btn-primary">Save</button>
+                </div>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </form>
+        </div>
+    </div>
+</div>
+

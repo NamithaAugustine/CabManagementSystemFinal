@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Booking>
+@{
+    ViewData["Title"] = "ShowRide";
+}
+
+<h1>YourRides</h1>
+<div>
+    <table class="table table-hover">
+
+        <thead>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        </thead>
+
+        <tbody>
+
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td>@i.From</td>
+                    <td>@i.To</td>
+                    <td>@i.Date</td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
+

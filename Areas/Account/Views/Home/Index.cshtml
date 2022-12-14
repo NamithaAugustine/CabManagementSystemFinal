@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> _userManager
+@inject SignInManager<ApplicationUser> _signinManager
+@{
+    ApplicationUser appUser = null;
+    ViewData["Title"] = "Index";
+    if (_signinManager.IsSignedIn(User))
+        appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+}
+<h1>Index</h1>
+
+<div class="text-center">
+    <h2 class="display-1">Cabex🚓</h2>
+
+    
+</div>
+<h4 class="display-4">Welcome @appUser?.FirstName</h4>
+@if (_signinManager.IsSignedIn(User))
+{
+    <div class="container" style="display: flex; align-items:center; justify-content: center; width:100%; ">
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <a class="btn btn-success" asp-action="Type" asp-controller="Home" asp-area="Account"><span>Book Ride</span></a>
+            </div>
+
+        </div>
+
+    </div>
+}

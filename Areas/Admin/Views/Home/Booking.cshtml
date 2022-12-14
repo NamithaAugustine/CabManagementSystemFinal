@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Booking>
+@{
+    ViewData["Title"] = "Booking";
+}
+
+<h1>Booking Details</h1>
+
+<div class="container-fluid">
+    @if (Model.Any())
+    {
+            <div class="row gap-5">
+                <table class="table table-striped">
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Date</th>
+            <th>Driver Assigned</th>
+            <th>Distance</th>
+        </tr>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.From</td>
+                <td>@booking.To</td>
+                <td>@booking.Date</td>
+                <td>@booking.DriverConfirmed</td>
+                <td>@booking.Distance</td>
+            </tr>
+        }
+    </table>
+            </div>
+    }
+    else
+    {
+            <div class="alert alert-info">
+                No Bookings Yet
+            </div>
+    }
+</div>
+
